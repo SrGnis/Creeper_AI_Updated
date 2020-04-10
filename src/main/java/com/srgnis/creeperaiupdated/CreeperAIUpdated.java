@@ -6,7 +6,9 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.srgnis.creeperaiupdated.ai.*;
+import com.srgnis.creeperaiupdated.ai.UpdatedCreeperSwellGoal;
+import com.srgnis.creeperaiupdated.ai.UpdatedNearestAttackableTargetGoal;
+import com.srgnis.creeperaiupdated.config.Config;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -20,24 +22,26 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod("creeperaiupdated")
+@Mod(CreeperAIUpdated.MOD_ID)
 @SuppressWarnings("unchecked")
 public class CreeperAIUpdated
 {
-	private static final Logger LOGGER = LogManager.getLogger();
-	public static final String MOD_ID = "testia";
 	public static CreeperAIUpdated instance;
+	public static final Logger LOGGER = LogManager.getLogger();
+	public static final String MOD_ID = "creeperaiupdated";
  
 	public CreeperAIUpdated() 
 	{	 
 		instance = this;
 		
+		Config.register();
+
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@SubscribeEvent
 	public void onEntitySpawn(SpecialSpawn event)
-	{	
+	{
 		if(event.getWorld().isRemote()) 
 		{
 			return;
@@ -50,7 +54,7 @@ public class CreeperAIUpdated
 
 			try 
 			{
-				if(Math.random() < 0.3)
+				if(Math.random() < Config.COMMON.powered_prob.get())
 				{
 					Field f_POWERED = CreeperEntity.class.getDeclaredField("POWERED"); // getting the field POWERED
 					f_POWERED.setAccessible(true); // set the field POWERED accessible from here
@@ -64,13 +68,16 @@ public class CreeperAIUpdated
 				Set<PrioritizedGoal> targets = (Set<PrioritizedGoal>)f_goals.get(centity.targetSelector);
 				Set<PrioritizedGoal> goals = (Set<PrioritizedGoal>)f_goals.get(centity.goalSelector);
 				
-				centity.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D); // increase the follow range and awareness
+				centity.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(Config.COMMON.follow_range.get()); // increase the follow range and awareness
 				
 				centity.targetSelector.removeGoal( ((PrioritizedGoal)targets.toArray()[0]).getGoal() );// removing player target
-				centity.goalSelector.removeGoal( ((PrioritizedGoal)goals.toArray()[1]).getGoal() ); // removing swell goal (second goal added -> second goal in the array)
-				
 				centity.targetSelector.addGoal(1, new UpdatedNearestAttackableTargetGoal<>(centity, PlayerEntity.class, false)); // adding the goal of targeting players using xray
-				centity.goalSelector.addGoal(2, new UpdatedCreeperSwellGoal(centity)); // adding the new SwellGoal
+				
+				if(Config.COMMON.can_break_walls.get())
+				{
+					centity.goalSelector.removeGoal( ((PrioritizedGoal)goals.toArray()[1]).getGoal() ); // removing swell goal (second goal added -> second goal in the array)
+					centity.goalSelector.addGoal(2, new UpdatedCreeperSwellGoal(centity)); // adding the new SwellGoal
+				}
 				
 			} catch (Exception e) {
 				LOGGER.debug(e.getMessage());

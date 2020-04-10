@@ -9,7 +9,7 @@ import net.minecraft.entity.monster.CreeperEntity;
 public class UpdatedCreeperSwellGoal extends Goal {
    private final CreeperEntity creeper;
    private LivingEntity attackingEntity;
-   private int explosionSize = 3;
+   private final int explosionSize = 3;
    private int finalBlastSize;
    
    public UpdatedCreeperSwellGoal(CreeperEntity entitycreeperIn) 
