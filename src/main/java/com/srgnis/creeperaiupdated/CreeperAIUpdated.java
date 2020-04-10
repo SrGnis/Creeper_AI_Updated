@@ -56,13 +56,13 @@ public class CreeperAIUpdated
 			{
 				if(Math.random() < Config.COMMON.powered_prob.get())
 				{
-					Field f_POWERED = CreeperEntity.class.getDeclaredField("POWERED"); // getting the field POWERED
+					Field f_POWERED = CreeperEntity.class.getDeclaredField("field_184714_b"); // getting the field POWERED (when debugging change the name to "POWERED")
 					f_POWERED.setAccessible(true); // set the field POWERED accessible from here
 					DataParameter<Boolean> POWERED = (DataParameter<Boolean>)f_POWERED.get(centity); // getting the value of the POWERED field
 					centity.getDataManager().set(POWERED, true); // setting POWERED to true
 				}
 				
-				Field f_goals = GoalSelector.class.getDeclaredField("goals");
+				Field f_goals = GoalSelector.class.getDeclaredField("field_220892_d"); // getting the field goals (when debugging change the name to "goals")
 				f_goals.setAccessible(true);
 				
 				Set<PrioritizedGoal> targets = (Set<PrioritizedGoal>)f_goals.get(centity.targetSelector);

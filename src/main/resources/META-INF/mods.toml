@@ -35,7 +35,7 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/creeper-ai-updated" #op
 logoFile="" #optional
 
 # A text field displayed in the mod UI
-credits="Mod inspired by the work of Funwayguy in his mod Epic Siege Mod" #optional
+credits="Mod inspired by the work of Funwayguy in his mod Epic Siege Mod" #optional
 
 # A text field displayed in the mod UI
 authors="SrGnis" #optional
