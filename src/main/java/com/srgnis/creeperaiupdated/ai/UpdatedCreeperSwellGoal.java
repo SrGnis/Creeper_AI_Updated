@@ -25,7 +25,7 @@ public class UpdatedCreeperSwellGoal extends Goal {
    public boolean shouldExecute() 
    {
       LivingEntity livingentity = this.creeper.getAttackTarget();
-      return this.creeper.getCreeperState() > 0 || livingentity != null && (this.creeper.getDistanceSq(livingentity) < 9.0D || breakWall(livingentity));
+      return this.creeper.getCreeperState() > 0 || livingentity != null && (this.creeper.getDistanceSq(livingentity) < 6.0D || breakWall(livingentity));
    }
 
    public boolean breakWall(LivingEntity livingentity) 

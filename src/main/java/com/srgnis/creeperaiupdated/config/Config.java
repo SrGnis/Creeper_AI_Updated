@@ -28,6 +28,8 @@ public final class Config
 		public final ForgeConfigSpec.DoubleValue powered_prob;
 		public final ForgeConfigSpec.DoubleValue follow_range;
 		public final ForgeConfigSpec.BooleanValue can_break_walls;
+		public final ForgeConfigSpec.BooleanValue can_leap;
+		public final ForgeConfigSpec.BooleanValue fire_explosions;
 
         GeneralConfig(ForgeConfigSpec.Builder builder)
         {
@@ -44,6 +46,14 @@ public final class Config
 			can_break_walls = builder
 					.comment("Creeper ability to break walls or not")
 					.define("can_break_walls", true);
+			
+			can_leap = builder
+					.comment("Creeper ability to leap at targets")
+					.define("can_leap", true);
+			
+			fire_explosions = builder
+					.comment("Creeper explosions cause fire")
+					.define("fire_explosions", true);
 
             builder.pop();
         }
