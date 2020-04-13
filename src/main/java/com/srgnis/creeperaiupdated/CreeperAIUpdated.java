@@ -60,13 +60,13 @@ public class CreeperAIUpdated
 				
 				if(Math.random() < Config.COMMON.powered_prob.get())
 				{
-					Field f_POWERED = CreeperEntity.class.getDeclaredField("POWERED"); // getting the field field_184714_b (when debugging change the name to "POWERED")
+					Field f_POWERED = CreeperEntity.class.getDeclaredField("field_184714_b"); // getting the field POWERED/field_184714_b (when debugging change the name to "POWERED")
 					f_POWERED.setAccessible(true); // set the field POWERED accessible from here
 					DataParameter<Boolean> POWERED = (DataParameter<Boolean>)f_POWERED.get(centity); // getting the value of the POWERED field
 					centity.getDataManager().set(POWERED, true); // setting POWERED to true
 				}
 				
-				Field f_goals = GoalSelector.class.getDeclaredField("goals"); // getting the field field_220892_d (when debugging change the name to "goals")
+				Field f_goals = GoalSelector.class.getDeclaredField("field_220892_d"); // getting the field goals/field_220892_d (when debugging change the name to "goals")
 				f_goals.setAccessible(true);
 				
 				Set<PrioritizedGoal> targets = (Set<PrioritizedGoal>)f_goals.get(centity.targetSelector);
@@ -102,7 +102,7 @@ public class CreeperAIUpdated
 		{
 			try {
 			
-				Field f_causesFire = Explosion.class.getDeclaredField("causesFire");
+				Field f_causesFire = Explosion.class.getDeclaredField("field_77286_a"); // getting the field causesFire/field_220892_d (when debugging change the name to "goals")
 				f_causesFire.setAccessible(true);
 				f_causesFire.set(event.getExplosion(), true);
 				
