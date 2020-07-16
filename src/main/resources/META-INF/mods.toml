@@ -1,7 +1,6 @@
-
 modLoader="javafml" #mandatory
 
-loaderVersion="[31,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion="[32,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 
 issueTrackerURL="https://github.com/SrGnis/Creeper_AI_Updated/issues" #optional
 
@@ -9,7 +8,7 @@ issueTrackerURL="https://github.com/SrGnis/Creeper_AI_Updated/issues" #optional
 
 modId="creeperaiupdated" #mandatory
 
-version="1.1" #mandatory
+version="1.2" #mandatory
 
 displayName="Creeper AI Updated" #mandatory
 
@@ -23,19 +22,24 @@ credits="Mod inspired by the work of Funwayguy in his mod Epic Siege Mod" #optio
 
 authors="SrGnis" #optional
 
-description='''Gives creepers the ability of see trough walls, spawn powered and explode if they cant reach you, destroying obstacles and walls.'''
+description='''Gives creepers the ability of see trough walls, spawn powered and explode if they can't reach you, destroying obstacles and walls.'''
 
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.creeperaiupdated]] #optional
+    # the modid of the dependency
     modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
-    versionRange="[31,)" #mandatory
+    # The version range of the dependency
+    versionRange="[32,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-
 # Here's another dependency
 [[dependencies.creeperaiupdated]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.1]"
     ordering="NONE"
     side="BOTH"

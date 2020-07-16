@@ -16,7 +16,7 @@ public class UpdatedCreeperSwellGoal extends Goal {
    {
       this.creeper = entitycreeperIn;
       this.setMutexFlags(EnumSet.of(Goal.Flag.MOVE));
-      this.finalBlastSize = explosionSize * (this.creeper.func_225509_J__()? 2 : 1);
+      this.finalBlastSize = explosionSize * (this.creeper.isCharged()? 2 : 1);
    }
 
    /**

@@ -54,12 +54,11 @@ public class UpdatedNearestAttackableTargetGoal<T extends LivingEntity> extends 
    }
 
    protected void findNearestTarget() {
-      if (this.targetClass != PlayerEntity.class && this.targetClass != ServerPlayerEntity.class) {
-         this.nearestTarget = this.goalOwner.world.<T>func_225318_b(this.targetClass, this.targetEntitySelector, this.goalOwner, this.goalOwner.func_226277_ct_(), this.goalOwner.func_226280_cw_(), this.goalOwner.func_226281_cx_(), this.getTargetableArea(this.getTargetDistance()));
-      } else {
-         this.nearestTarget = this.goalOwner.world.getClosestPlayer(this.targetEntitySelector, this.goalOwner, this.goalOwner.func_226277_ct_(), this.goalOwner.func_226280_cw_(), this.goalOwner.func_226281_cx_());
-      }
-
+	   if (this.targetClass != PlayerEntity.class && this.targetClass != ServerPlayerEntity.class) {
+		   this.nearestTarget = this.goalOwner.world.func_225318_b(this.targetClass, this.targetEntitySelector, this.goalOwner, this.goalOwner.getPosX(), this.goalOwner.getPosYEye(), this.goalOwner.getPosZ(), this.getTargetableArea(this.getTargetDistance()));
+	   } else {
+		   this.nearestTarget = this.goalOwner.world.getClosestPlayer(this.targetEntitySelector, this.goalOwner, this.goalOwner.getPosX(), this.goalOwner.getPosYEye(), this.goalOwner.getPosZ());
+	   }
    }
 
    /**

@@ -11,7 +11,7 @@ import com.srgnis.creeperaiupdated.ai.UpdatedNearestAttackableTargetGoal;
 import com.srgnis.creeperaiupdated.config.Config;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.GoalSelector;
 import net.minecraft.entity.ai.goal.LeapAtTargetGoal;
 import net.minecraft.entity.ai.goal.PrioritizedGoal;
@@ -54,7 +54,6 @@ public class CreeperAIUpdated
 		if (entity instanceof CreeperEntity ) { // is a creeper
 			
 			CreeperEntity centity = ((CreeperEntity) entity); // cast to CreeperEntity
-
 			try 
 			{
 				
@@ -72,12 +71,13 @@ public class CreeperAIUpdated
 				Set<PrioritizedGoal> targets = (Set<PrioritizedGoal>)f_goals.get(centity.targetSelector);
 				Set<PrioritizedGoal> goals = (Set<PrioritizedGoal>)f_goals.get(centity.goalSelector);
 				
-				centity.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(Config.COMMON.follow_range.get()); // increase the follow range and awareness
+				//field_233819_b_ => Follow_Range
+				centity.getAttribute(Attributes.field_233819_b_).setBaseValue(Config.COMMON.follow_range.get()); // increase the follow range and awareness
 				
 				centity.targetSelector.removeGoal( ((PrioritizedGoal)targets.toArray()[0]).getGoal() );// removing player target
 				centity.targetSelector.addGoal(1, new UpdatedNearestAttackableTargetGoal<>(centity, PlayerEntity.class, false)); // adding the goal of targeting players using xray
 				
-				if(Config.COMMON.can_break_walls.get())
+				if(Config.COMMON.can_break_walls.get() && Config.COMMON.maxLayer.get() >= centity.prevPosY && Config.COMMON.minLayer.get() <= centity.prevPosY)
 				{
 					centity.goalSelector.removeGoal( ((PrioritizedGoal)goals.toArray()[1]).getGoal() ); // removing swell goal (second goal added -> second goal in the array)
 					centity.goalSelector.addGoal(2, new UpdatedCreeperSwellGoal(centity)); // adding the new SwellGoal
