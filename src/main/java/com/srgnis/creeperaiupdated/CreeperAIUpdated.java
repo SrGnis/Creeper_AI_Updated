@@ -72,7 +72,7 @@ public class CreeperAIUpdated
 				Set<PrioritizedGoal> goals = (Set<PrioritizedGoal>)f_goals.get(centity.goalSelector);
 				
 				//field_233819_b_ => Follow_Range
-				centity.getAttribute(Attributes.field_233819_b_).setBaseValue(Config.COMMON.follow_range.get()); // increase the follow range and awareness
+				centity.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(Config.COMMON.follow_range.get()); // increase the follow range and awareness
 				
 				centity.targetSelector.removeGoal( ((PrioritizedGoal)targets.toArray()[0]).getGoal() );// removing player target
 				centity.targetSelector.addGoal(1, new UpdatedNearestAttackableTargetGoal<>(centity, PlayerEntity.class, false)); // adding the goal of targeting players using xray
@@ -102,7 +102,7 @@ public class CreeperAIUpdated
 		{
 			try {
 			
-				Field f_causesFire = Explosion.class.getDeclaredField("field_77286_a"); // getting the field causesFire/field_220892_d (when debugging change the name to "goals")
+				Field f_causesFire = Explosion.class.getDeclaredField("field_77286_a"); // getting the field causesFire/field_77286_a (when debugging change the name to "goals")
 				f_causesFire.setAccessible(true);
 				f_causesFire.set(event.getExplosion(), true);
 				

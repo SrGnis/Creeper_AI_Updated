@@ -2,9 +2,12 @@ package com.srgnis.creeperaiupdated.ai;
 
 import java.util.EnumSet;
 
+import com.srgnis.creeperaiupdated.config.Config;
+
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.monster.CreeperEntity;
+import net.minecraft.pathfinding.Path;
 
 public class UpdatedCreeperSwellGoal extends Goal {
    private final CreeperEntity creeper;
@@ -25,12 +28,26 @@ public class UpdatedCreeperSwellGoal extends Goal {
    public boolean shouldExecute() 
    {
       LivingEntity livingentity = this.creeper.getAttackTarget();
-      return this.creeper.getCreeperState() > 0 || livingentity != null && (this.creeper.getDistanceSq(livingentity) < 6.0D || breakWall(livingentity));
+      return this.creeper.getCreeperState() > 0 || livingentity != null && (this.creeper.getDistanceSq(livingentity) < 9.0D || preBreakWall(livingentity));
+   }
+   
+   private boolean preBreakWall(LivingEntity livingEntity){
+       if (breakWall(livingEntity)){
+           Path p = creeper.getNavigator().getPathToEntity(livingEntity, 0);
+           if( p!=null && p.getCurrentPathLength() > 6 ){
+               creeper.getNavigator().setPath(p, 1.0);
+               return false;
+           } else{
+               return true;
+           }
+       } else {
+           return false;
+       }
    }
 
    public boolean breakWall(LivingEntity livingentity) 
    {
-	   return creeper.ticksExisted > 60 && !creeper.hasPath() && creeper.getDistance(livingentity) < 32;
+	   return creeper.ticksExisted > 60 && !creeper.hasPath() && creeper.getDistance(livingentity) < Config.COMMON.breach_range.get();
    }
    
    /**
