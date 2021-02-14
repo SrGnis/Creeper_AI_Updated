@@ -12,23 +12,27 @@ import net.minecraft.pathfinding.Path;
 public class UpdatedCreeperSwellGoal extends Goal {
    private final CreeperEntity creeper;
    private LivingEntity attackingEntity;
-   private final int explosionSize = 3;
-   private int finalBlastSize;
+   private boolean normalExpl = false;
    
    public UpdatedCreeperSwellGoal(CreeperEntity entitycreeperIn) 
    {
       this.creeper = entitycreeperIn;
       this.setMutexFlags(EnumSet.of(Goal.Flag.MOVE));
-      this.finalBlastSize = explosionSize * (this.creeper.isCharged()? 2 : 1);
    }
 
    /**
     * Returns whether the EntityAIBase should begin execution.
     */
-   public boolean shouldExecute() 
-   {
+   public boolean shouldExecute() {
       LivingEntity livingentity = this.creeper.getAttackTarget();
-      return this.creeper.getCreeperState() > 0 || livingentity != null && (this.creeper.getDistanceSq(livingentity) < 9.0D || preBreakWall(livingentity));
+      
+      if(this.creeper.getCreeperState() > 0){
+          return true;
+      } else if(livingentity != null) {
+          normalExpl = this.creeper.getDistanceSq(livingentity) < 9.0D;
+          return (normalExpl || preBreakWall(livingentity));
+      }
+      return false;
    }
    
    private boolean preBreakWall(LivingEntity livingEntity){
@@ -76,7 +80,7 @@ public class UpdatedCreeperSwellGoal extends Goal {
 	        {
 	            this.creeper.setCreeperState(-1);
 	        }
-	        else if (this.creeper.getDistanceSq(this.attackingEntity) > finalBlastSize * finalBlastSize && !this.breakWall(attackingEntity))
+	        else if (this.normalExpl && this.creeper.getDistanceSq(this.attackingEntity) > 49.0D)
 	        {
 	            this.creeper.setCreeperState(-1);
 	        }
