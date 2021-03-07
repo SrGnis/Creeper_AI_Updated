@@ -1,7 +1,5 @@
 # Creeper_AI_Updated
 
-Fabric port on [Creeper_AI_Updated_Fabric](https://github.com/SrGnis/Creeper_AI_Updated_Fabric)
-
 Inpired by the mod [Epic Siege Mod](https://www.curseforge.com/minecraft/mc-mods/epic-siege-mod), Creeper AI Updated gives creepers the ability to **bomb their way to you**, so hiding in your house is no longer an option.
 
 In addition, this mod gives creepers other abilities like fire explosions, spawning powered and jump at their targert like spiders do.
