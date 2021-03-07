@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.srgnis.creeperaiupdated.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MobEntityMixin",
+    "CreeperEntityMixin",
+    "MobEntityAccessor",
+    "GoalSelectorAccessor",
+    "FollowTargetGoalAccessor",
+    "TrackTargetGoalAccessor"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
