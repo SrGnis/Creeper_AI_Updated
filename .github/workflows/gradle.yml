@@ -21,13 +21,13 @@ jobs:
       with:
         java-version: 1.8
     - name: Grant execute permission for gradlew
-      run: chmod +x forge/gradlew
+      run: chmod +x ~/forge/gradlew
     - name: Build with Gradle
-      run: forge/gradlew build
+      run: ~/forge/gradlew build
     - uses: actions/upload-artifact@v2
       with:
         name: creeperaiupdated_forge
-        path: build/libs
+        path: ~/build/libs
 
   build_fabric:
     
@@ -46,4 +46,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: creeperaiupdated_fabric
-        path: build/libs
+        path: ~/build/libs
