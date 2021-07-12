@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "creeperaiupdated",
-  "version": "1.3.2",
+  "version": "1.4.0",
 
   "name": "Creeper AI Updated",
   "description": "Gives creepers the ability of see trough walls, spawn powered and explode if they can't reach you, destroying obstacles and walls.",
@@ -29,7 +29,7 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.17.x"
   },
   "suggests": {
     "another-mod": "*"

@@ -14,7 +14,7 @@ import net.minecraft.entity.ai.goal.PrioritizedGoal;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -34,16 +34,16 @@ public abstract class MobEntityMixin extends LivingEntity {
     }
 
     @Inject(at = @At("HEAD"), method = "initialize")
-    private void onInitialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable CompoundTag entityTag, CallbackInfoReturnable info){
+    private void onInitialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityTag, CallbackInfoReturnable info){
         if(getType() == EntityType.CREEPER){
             Object object = this;
             CreeperEntity centity = ((CreeperEntity)object);
             if(getRandom().nextDouble() < CreeperAIUpdated.config.poweredChance  && spawnReason == SpawnReason.NATURAL){
 
-                CompoundTag tag = new CompoundTag();
-                centity.writeCustomDataToTag(tag);
+                NbtCompound tag = new NbtCompound();
+                centity.writeCustomDataToNbt(tag);
                 tag.putBoolean("powered", true);
-                centity.readCustomDataFromTag(tag);
+                centity.readCustomDataFromNbt(tag);
             }
 
             centity.getAttributeInstance(EntityAttributes.GENERIC_FOLLOW_RANGE).setBaseValue(CreeperAIUpdated.config.followingRadius);

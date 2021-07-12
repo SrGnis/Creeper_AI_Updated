@@ -20,6 +20,6 @@ public class XrayFollowTargetGoal<T extends LivingEntity> extends FollowTargetGo
 
     public XrayFollowTargetGoal(MobEntity mob, Class<T> targetClass, int reciprocalChance, boolean checkVisibility, boolean checkCanNavigate, @Nullable Predicate<LivingEntity> targetPredicate) {
         super(mob, targetClass, reciprocalChance, checkVisibility, checkCanNavigate, targetPredicate);
-        this.targetPredicate = (new TargetPredicate()).setBaseMaxDistance(this.getFollowRange()).setPredicate(targetPredicate).includeHidden();
+        this.targetPredicate = (TargetPredicate.createAttackable()).setBaseMaxDistance(this.getFollowRange()).setPredicate(targetPredicate).ignoreVisibility();
     }
 }
