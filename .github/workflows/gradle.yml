@@ -44,9 +44,7 @@ jobs:
       run: chmod +x fabric/gradlew
     - name: Build with Gradle
       run: cd fabric && ./gradlew build
-    - name: LS
-      run: ls -Rl
     - uses: actions/upload-artifact@v2.2.4
       with:
         name: creeperaiupdated_fabric
-        path: build/libs
+        path: ./fabric/build/libs/*
