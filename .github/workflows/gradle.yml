@@ -26,7 +26,7 @@ jobs:
     - name: Changing directory
       run: cd forge
     - name: Build with Gradle
-      run: gradlew build
+      run: ./gradlew build
     - uses: actions/upload-artifact@v2.2.4
       with:
         name: creeperaiupdated_forge
@@ -47,7 +47,7 @@ jobs:
     - name: Changing directory
       run: cd fabric
     - name: Build with Gradle
-      run: gradlew build
+      run: ./gradlew build
     - uses: actions/upload-artifact@v2.2.4
       with:
         name: creeperaiupdated_fabric
