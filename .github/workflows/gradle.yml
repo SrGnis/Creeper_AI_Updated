@@ -28,7 +28,7 @@ jobs:
     - uses: actions/upload-artifact@v2.2.4
       with:
         name: creeperaiupdated_forge
-        path: ~/build/libs
+        path: ./fabric/build/libs/*
 
   build_fabric:
     
