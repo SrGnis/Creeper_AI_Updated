@@ -25,6 +25,8 @@ jobs:
       run: chmod +x forge/gradlew
     - name: Changing directory
       run: cd forge
+    - name: printing
+      run: pwd
     - name: Build with Gradle
       run: ./gradlew build
     - uses: actions/upload-artifact@v2.2.4
@@ -46,6 +48,8 @@ jobs:
       run: chmod +x fabric/gradlew
     - name: Changing directory
       run: cd fabric
+    - name: printing
+      run: pwd
     - name: Build with Gradle
       run: ./gradlew build
     - uses: actions/upload-artifact@v2.2.4
