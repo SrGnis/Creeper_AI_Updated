@@ -23,14 +23,12 @@ jobs:
         java-version: 1.16
     - name: Grant execute permission for gradlew
       run: chmod +x forge/gradlew
-    - name: Changing directory
-      run: cd forge
     - name: Build with Gradle
-      run: ./gradlew build
+      run: cd forge && ./gradlew build
     - uses: actions/upload-artifact@v2.2.4
       with:
         name: creeperaiupdated_forge
-        path: ~/build/libs
+        path: ./fabric/build/libs/*
 
   build_fabric:
     
@@ -44,11 +42,9 @@ jobs:
         java-version: 1.16
     - name: Grant execute permission for gradlew
       run: chmod +x fabric/gradlew
-    - name: Changing directory
-      run: cd fabric
     - name: Build with Gradle
-      run: ./gradlew build
+      run: cd fabric && ./gradlew build
     - uses: actions/upload-artifact@v2.2.4
       with:
         name: creeperaiupdated_fabric
-        path: ~/fabric/build/libs
+        path: ./fabric/build/libs/*
