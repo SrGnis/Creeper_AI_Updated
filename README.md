@@ -16,4 +16,4 @@ The configuration of this mod allow you to change:
 * Maximum and minimum Y level where creepers can SPAWN WITH THE ABILITY of breach walls.
 
 
-If you want to contribute you can read the [developer guide](docs/index) and get a better understanding of this project.
+If you want to contribute you can read the [developer guide](docs/index.md) and get a better understanding of this project.
