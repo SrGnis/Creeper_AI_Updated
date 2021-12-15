@@ -2,13 +2,13 @@ package com.srgnis.creeperaiupdated.goals;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
-import net.minecraft.entity.ai.goal.FollowTargetGoal;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.mob.MobEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 
-public class XrayFollowTargetGoal<T extends LivingEntity> extends FollowTargetGoal {
+public class XrayFollowTargetGoal<T extends LivingEntity> extends ActiveTargetGoal {
 
     public XrayFollowTargetGoal(MobEntity mob, Class<T> targetClass, boolean checkVisibility) {
         this(mob, targetClass, checkVisibility, false);
