@@ -57,7 +57,7 @@ public abstract class MobEntityMixin extends LivingEntity {
             GoalSelector goals = ((MobEntityAccessor) centity).getGoalSelector();
             Set<PrioritizedGoal> gGoals = ((GoalSelectorAccessor) goals).getGoals();
 
-            if(CreeperAIUpdated.config.canBreach){ //&& (centity.getPos().getY() < CreeperAIUpdated.config.maxY && centity.getPos().getY() > CreeperAIUpdated.config.minY)) {
+            if(CreeperAIUpdated.config.canBreach && (centity.getPos().getY() < CreeperAIUpdated.config.maxY && centity.getPos().getY() > CreeperAIUpdated.config.minY)) {
 
                 goals.remove(((PrioritizedGoal) gGoals.toArray()[1]).getGoal()); // removing ignite goal (second goal added -> second goal in the array)
                 goals.add(2, new BreachCreeperIgniteGoal(centity)); // adding the new Ignite Goal
