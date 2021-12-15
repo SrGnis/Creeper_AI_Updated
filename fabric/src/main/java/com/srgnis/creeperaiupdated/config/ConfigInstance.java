@@ -17,8 +17,8 @@ public class ConfigInstance {
         canLeap=true;
         followingRadius=32;
         breachingRadius=30;
-        maxY=255;
-        minY=0;
+        maxY=320;
+        minY=-64;
         poweredChance=0.3;
     }
 

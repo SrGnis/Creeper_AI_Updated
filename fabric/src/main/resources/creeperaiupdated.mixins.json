@@ -8,7 +8,7 @@
     "CreeperEntityMixin",
     "MobEntityAccessor",
     "GoalSelectorAccessor",
-    "FollowTargetGoalAccessor",
+    "ActiveTargetGoalAccessor",
     "TrackTargetGoalAccessor"
   ],
   "client": [
