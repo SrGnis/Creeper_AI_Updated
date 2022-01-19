@@ -22,11 +22,11 @@ All the modifications are done using mixins and new goals, the main class is onl
 
 There are two important mixins which do all the work, the rest are just Acessors wich grant acces to protected values/metods.
 
-### CreeperEntityMixin
+### WorldMixin
 
 Checks if the creeper explosion should create fire.
 
-It just adds a if condition to the end of the method CreateExplosion of CreeperEntity that returns a fire explosion if the config states that.
+It just changes the createfire bool in the method createExplosion of World if the entity which created the explosion is a creeper and if the config states that.
 
 ### MobEntityMixin
 
