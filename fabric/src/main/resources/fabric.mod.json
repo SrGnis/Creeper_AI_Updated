@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "creeperaiupdated",
-  "version": "1.5.0",
+  "version": "1.5.1",
 
   "name": "Creeper AI Updated",
   "description": "Gives creepers the ability of see trough walls, spawn powered and explode if they can't reach you, destroying obstacles and walls.",
