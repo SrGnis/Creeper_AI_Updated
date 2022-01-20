@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(EntityNavigation.class)
-public interface EntityNavigationAccessor {
+public interface AccessorEntityNavigation {
 
     @Accessor("speed")
     public double getSpeed();

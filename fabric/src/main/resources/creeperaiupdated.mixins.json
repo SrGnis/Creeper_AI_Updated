@@ -4,12 +4,12 @@
   "package": "com.srgnis.creeperaiupdated.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MobEntityMixin",
-    "WorldMixin",
-    "MobEntityAccessor",
-    "GoalSelectorAccessor",
-    "ActiveTargetGoalAccessor",
-    "TrackTargetGoalAccessor"
+    "MixinMobEntity",
+    "MixinWorld",
+    "AccessorMobEntity",
+    "AccessorGoalSelector",
+    "AccessorActiveTargetGoal",
+    "AccessorTrackTargetGoal"
   ],
   "client": [
   ],

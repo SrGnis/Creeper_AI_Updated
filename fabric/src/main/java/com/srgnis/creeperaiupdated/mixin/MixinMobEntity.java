@@ -27,9 +27,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Set;
 
 @Mixin(MobEntity.class)
-public abstract class MobEntityMixin extends LivingEntity {
+public abstract class MixinMobEntity extends LivingEntity {
 
-    protected MobEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+    protected MixinMobEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -48,14 +48,14 @@ public abstract class MobEntityMixin extends LivingEntity {
 
             centity.getAttributeInstance(EntityAttributes.GENERIC_FOLLOW_RANGE).setBaseValue(CreeperAIUpdated.config.followingRadius);
 
-            GoalSelector targets = ((MobEntityAccessor) centity).getTargetSelector();
-            Set<PrioritizedGoal> tGoals = ((GoalSelectorAccessor) targets).getGoals();
+            GoalSelector targets = ((AccessorMobEntity) centity).getTargetSelector();
+            Set<PrioritizedGoal> tGoals = ((AccessorGoalSelector) targets).getGoals();
 
             targets.remove( ((PrioritizedGoal)tGoals.toArray()[0]).getGoal() );// removing player target
             targets.add(1, new XrayFollowTargetGoal(centity, PlayerEntity.class, false));
 
-            GoalSelector goals = ((MobEntityAccessor) centity).getGoalSelector();
-            Set<PrioritizedGoal> gGoals = ((GoalSelectorAccessor) goals).getGoals();
+            GoalSelector goals = ((AccessorMobEntity) centity).getGoalSelector();
+            Set<PrioritizedGoal> gGoals = ((AccessorGoalSelector) goals).getGoals();
 
             if(CreeperAIUpdated.config.canBreach && (centity.getPos().getY() < CreeperAIUpdated.config.maxY && centity.getPos().getY() > CreeperAIUpdated.config.minY)) {
 
