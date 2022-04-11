@@ -1,6 +1,6 @@
 modLoader="javafml" #mandatory
 
-loaderVersion="[35,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion="[39,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 
 license="mit"
 
@@ -10,7 +10,7 @@ issueTrackerURL="https://github.com/SrGnis/Creeper_AI_Updated/issues" #optional
 
 modId="creeperaiupdated" #mandatory
 
-version="1.3.1" #mandatory
+version="1.5.0" #mandatory
 
 displayName="Creeper AI Updated" #mandatory
 
@@ -42,6 +42,6 @@ description='''Gives creepers the ability of see trough walls, spawn powered and
 [[dependencies.creeperaiupdated]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4,1.17)"
+    versionRange="[1.18.1,1.19)"
     ordering="NONE"
     side="BOTH"
