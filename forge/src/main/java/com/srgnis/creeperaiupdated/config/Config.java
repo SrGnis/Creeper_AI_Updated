@@ -64,11 +64,11 @@ public final class Config
 			
 			maxLayer = builder
 					.comment("Maximum Y layer where creepers can spawn with the breaching ability.(Sea level = 62)")
-					.defineInRange("maxLayer", 255.0, 0.0, 255.0);
+					.defineInRange("maxLayer", 320.0, -64.0, 320.0);
 			
 			minLayer = builder
 					.comment("Minimum Y layer where creepers can spawn with the breaching ability.(Sea level = 62)")
-					.defineInRange("minLayer", 0.0, 0.0, 255.0);
+					.defineInRange("minLayer", -64.0, -64.0, 320.0);
 
             builder.pop();
         }
