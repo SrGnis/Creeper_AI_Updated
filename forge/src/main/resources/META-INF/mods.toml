@@ -10,7 +10,7 @@ issueTrackerURL="https://github.com/SrGnis/Creeper_AI_Updated/issues" #optional
 
 modId="creeperaiupdated" #mandatory
 
-version="1.5.0" #mandatory
+version="1.5.1" #mandatory
 
 displayName="Creeper AI Updated" #mandatory
 
