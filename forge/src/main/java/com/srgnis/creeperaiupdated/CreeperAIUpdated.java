@@ -40,6 +40,7 @@ public class CreeperAIUpdated
 		Config.register();
 
 		MinecraftForge.EVENT_BUS.register(this);
+
 	}
 	
 	@SubscribeEvent
@@ -76,7 +77,7 @@ public class CreeperAIUpdated
 				centity.targetSelector.removeGoal( ((WrappedGoal)targets.toArray()[0]).getGoal() );// removing player target
 				centity.targetSelector.addGoal(1, new UpdatedNearestAttackableTargetGoal<>(centity, Player.class, false)); // adding the goal of targeting players using xray
 				
-				if(Config.COMMON.can_break_walls.get() && Config.COMMON.maxLayer.get() >= centity.xOld && Config.COMMON.minLayer.get() <= centity.yOld)
+				if(Config.COMMON.can_break_walls.get() && Config.COMMON.maxLayer.get() >= centity.yOld && Config.COMMON.minLayer.get() <= centity.yOld)
 				{
 					centity.goalSelector.removeGoal( ((WrappedGoal)goals.toArray()[1]).getGoal() ); // removing swell goal (second goal added -> second goal in the array)
 					centity.goalSelector.addGoal(2, new UpdatedCreeperSwellGoal(centity)); // adding the new SwellGoal

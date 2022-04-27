@@ -25,11 +25,11 @@ public final class Config
 
     public static final class GeneralConfig
     {
-    	public final ForgeConfigSpec.DoubleValue maxLayer;
-    	public final ForgeConfigSpec.DoubleValue minLayer;
+    	public final ForgeConfigSpec.ConfigValue<Integer> maxLayer;
+    	public final ForgeConfigSpec.ConfigValue<Integer> minLayer;
 		public final ForgeConfigSpec.DoubleValue powered_prob;
-		public final ForgeConfigSpec.DoubleValue follow_range;
-		public final ForgeConfigSpec.DoubleValue breach_range;
+		public final ForgeConfigSpec.IntValue follow_range;
+		public final ForgeConfigSpec.IntValue breach_range;
 		public final ForgeConfigSpec.BooleanValue can_break_walls;
 		public final ForgeConfigSpec.BooleanValue can_leap;
 		public final ForgeConfigSpec.BooleanValue fire_explosions;
@@ -44,11 +44,11 @@ public final class Config
 
 			follow_range = builder
 					.comment("Maximum distance a creeper can see and follow you. (32 = vanilla)")
-					.defineInRange("follow_range", 32, 0.0, 2048.0);
+					.defineInRange("follow_range", 32, 0, 2048);
 			
 			breach_range = builder
 					.comment("Maximum distance a creeper can decide to explode.")
-					.defineInRange("breach_range", 30, 0.0, 2048.0);
+					.defineInRange("breach_range", 30, 0, 2048);
 			
 			can_break_walls = builder
 					.comment("Creeper ability to breach trough walls or not")
@@ -64,11 +64,11 @@ public final class Config
 			
 			maxLayer = builder
 					.comment("Maximum Y layer where creepers can spawn with the breaching ability.(Sea level = 62)")
-					.defineInRange("maxLayer", 320.0, -64.0, 320.0);
+					.define("maxLayer", 320);
 			
 			minLayer = builder
 					.comment("Minimum Y layer where creepers can spawn with the breaching ability.(Sea level = 62)")
-					.defineInRange("minLayer", -64.0, -64.0, 320.0);
+					.define("minLayer", -64);
 
             builder.pop();
         }
