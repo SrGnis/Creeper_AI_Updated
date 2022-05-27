@@ -1,6 +1,6 @@
 # MobEntityMixin
 
-This mixin is where almost all the creeper modiications are applied.
+This mixin is where almost all the creeper modications are applied.
 
 It injects code into the initialize method of LivingEntity detecting when a creeper spwawns and appling modifications to it.
 
