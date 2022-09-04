@@ -3,6 +3,7 @@ package com.srgnis.creeperaiupdated;
 import java.lang.reflect.Field;
 import java.util.Set;
 
+import net.minecraftforge.event.level.ExplosionEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
-import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraft.world.level.Explosion;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -46,7 +46,7 @@ public class CreeperAIUpdated
 	@SubscribeEvent
 	public void onEntitySpawn(SpecialSpawn event)
 	{
-		if(event.getWorld().isClientSide())
+		if(event.getLevel().isClientSide())
 		{
 			return;
 		}
