@@ -1,5 +1,7 @@
 # Creeper_AI_Updated
 
+## This project is archived and will not get more updates, check [this issue](https://github.com/SrGnis/Creeper_AI_Updated/issues/24) for more information
+
 [![Fabric Build](https://github.com/SrGnis/Creeper_AI_Updated/actions/workflows/fabric_build.yml/badge.svg?branch=master)](https://github.com/SrGnis/Creeper_AI_Updated/actions/workflows/fabric_build.yml)
 
 Inpired by the mod [Epic Siege Mod](https://www.curseforge.com/minecraft/mc-mods/epic-siege-mod), Creeper AI Updated gives creepers the ability to **bomb their way to you**, so hiding in your house is no longer an option.
